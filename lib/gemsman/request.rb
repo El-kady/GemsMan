@@ -27,6 +27,7 @@ module Gemsman
           request.body = data
           request.content_length = data.size
       end
+      puts data.inspect
       # Open the connection
       @connection = Net::HTTP.new uri.host, uri.port
 

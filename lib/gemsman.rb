@@ -1,15 +1,18 @@
 require "gemsman/version"
 require "gemsman/collector"
-require "gemsman/request"
+require "gemsman/client"
 
 
 module Gemsman
   class Manager
-    include Gemsman::Request
+
     def initialize
-      # @collector = Collector.new
+      @collector = Collector.new
+      @client = Client.new
       # puts @collector.dependencies.map{ |s| s.name }
-      puts post('/',{}).inspect
+      #puts post('/',{}).inspect
+
+      puts @client.query(['one', 'two'],'ubuntu').inspect
     end
 
 
