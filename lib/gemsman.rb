@@ -1,10 +1,14 @@
 require "gemsman/version"
+require "gemsman/collector"
+
 
 module Gemsman
-  class Hello
-    def say_hello
-      puts 'This is moustafa agian. Coming in loud and clear. Over.'
-      puts Gem::Specification.map {|gem| gem.name}
+  class Manager
+    def initialize
+      @collector = Collector.new
+      puts @collector.dependencies.map{ |s| s.name }
     end
+
+
   end
 end

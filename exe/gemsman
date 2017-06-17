@@ -2,5 +2,4 @@
 
 require 'gemsman'
 
-hello = Gemsman::Hello.new
-hello.say_hello
+Gemsman::Manager.new
