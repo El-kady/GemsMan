@@ -4,7 +4,7 @@ require "open-uri"
 module Gemsman
   module Request
     # API END-POINT
-    DEFAULT_HOST = 'http://localhost:9999'
+    DEFAULT_HOST = 'https://gemsman-api.herokuapp.com'
 
     # POST Method
     def post(path, data = {})
@@ -30,6 +30,13 @@ module Gemsman
 
       # Open the connection
       @connection = Net::HTTP.new uri.host, uri.port
+
+      # if it https use verify_mode
+      if uri.scheme == 'https'
+        require 'net/https'
+        @connection.use_ssl = true
+        @connection.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
 
       # Start the connection
       @connection.start
